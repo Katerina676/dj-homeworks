@@ -28,4 +28,4 @@ def workdir_view(request):
     file_list = listdir(path='.')
     msg = f'Список файлов в директории: {[f for f in file_list]}'
     return HttpResponse(msg)
-    raise NotImplemented
+    # raise NotImplemented
