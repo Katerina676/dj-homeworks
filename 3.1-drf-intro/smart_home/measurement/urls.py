@@ -1,8 +1,10 @@
 from django.urls import path
-from django.contrib import admin
-from .views import DemoView
+from .views import CreateViewSensor, UpdateSensor, UpdateMeasurment, OneSensor
 
 
 urlpatterns = [
-    path('list/', DemoView),
+    path('sensors/', CreateViewSensor.as_view()),
+    path('sensors_up/<pk>/', UpdateSensor.as_view()),
+    path('measurments/', UpdateMeasurment.as_view()),
+    path('sensors/<pk>/', OneSensor.as_view()),
 ]
