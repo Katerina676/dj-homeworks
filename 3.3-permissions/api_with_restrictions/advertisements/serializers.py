@@ -41,7 +41,7 @@ class AdvertisementSerializer(serializers.ModelSerializer):
         """Метод для валидации. Вызывается при создании и обновлении."""
         user = self.context["request"].user
         queryset = Advertisement.objects.filter(creator=user, status='OPEN')
-        if len(queryset) >= 10 and data['status'] == 'OPEN':
-            raise ValueError('Должно быть не больше 10 открытых объявлений')
+        if queryset.count() >= 10 and data['status'] == 'OPEN':
+            raise serializers.ValidationError("Нельзя иметь более 10 открытых объявлений")
 
         return data
